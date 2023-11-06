@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conferencia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="./imagenes_integrador_front/codoacodo.png" alt="Codo a Codo logo" />
+        Conf Bs As
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">La conferencia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#oradores">Los oradores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#lugar">El lugar y la fecha</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#form-orador">Conviértete en orador</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn-compra-tickets" href="tickets.html">Comprar tickets</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="content-main">
+    <div class="row justify-content-center" style="padding-top: 1%">
+      <div class="card" style="width: 18rem; text-align: center; border-color: blue">
+        <div class="card-body">
+          <h5 class="card-title">Estudiante</h5>
+          <p class="card-text">Tiene un descuento</p>
+          <p class="card-title">80%</p>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            *Presentar Documentación
+          </h6>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem; text-align: center; border-color: green">
+        <div class="card-body">
+          <h5 class="card-title">Trainee</h5>
+          <p class="card-text">Tiene un descuento</p>
+          <p class="card-title">50%</p>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            *Presentar Documentación
+          </h6>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem; text-align: center; border-color: orange">
+        <div class="card-body">
+          <h5 class="card-title">Junior</h5>
+          <p class="card-text">Tiene un descuento</p>
+          <p class="card-title">15%</p>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            *Presentar Documentación
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="testbox">
+    <form action="/">
+      <div class="row" style="text-align: center; padding-top: 1%; padding-bottom: 1%">
+        <h6>VENTA</h6>
+        <h2><span style="font-weight: bold"></span>VALOR DEL TICKET $200</h2>
+      </div>
+      <p id="h1"></p>
+      <p id="h2">Nombre</p>
+      <input placeholder="Ingrese su Nombre" name="nombre" type="text" class="input" />
+      <p id="h4">Apellido</p>
+      <input placeholder="Ingrese su Apellido" type="text" name="apellido" class="input" />
+      <p id="h4">Correo<span>*</span></p>
+      <input placeholder="Ingrese su email" type="text" name="email" class="input" />
+      <p id="h4">Cantidad</p>
+      <input placeholder="Ingrese la cantidad de tickets" type="text" class="input" name="cantidad" id="cantidadTickets" />
+      <p id="h4">Selecciona una categoria<span>*</span></p>
+      <table>
+        <tbody>
+          <tr>
+            <th class="first-col"></th>
+            <th>Estudiante</th>
+            <th>Trainee</th>
+            <th>Junior</th>
+          </tr>
+          <tr>
+            <td class="first-col">Categoria</td>
+            <td><input name="categoria" value="estudiante" type="radio" /></td>
+            <td><input name="categoria" value="trainee" type="radio" /></td>
+            <td><input name="categoria" value="junior" type="radio" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <p id="h6" class="total-a-pagar"></p>
+      <textarea rows="4" style="background-color: aqua" placeholder="Total a pagar: $" class="total-a-pagar-textarea"></textarea>
+      <div class="btn-block">
+        <button type="button" class="btn btn-primary" id="borrarButton">Borrar</button>
+        <button type="button" class="btn btn-primary" id="calcularTotalButton">Calcular Total</button>
+        <button type="button" class="btn btn-primary" id="Resumen">Resumen</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+     
+  //Borrar
+    const borrarButton = document.getElementById("borrarButton");
+    borrarButton.addEventListener("click", () => {
+    
+      const form = document.querySelector('form');
+      form.reset();
+    });
+
+//Calcular Total a Pagar
+    const calcularTotalButton = document.getElementById("calcularTotalButton");
+    calcularTotalButton.addEventListener("click", () => {
+      const cantidadTickets = document.getElementById("cantidadTickets").value;
+      const categoria = document.querySelector('input[name="categoria"]:checked').value;
+
+      let descuento = 0;
+      if (categoria === "estudiante") {
+        descuento = 0.8;
+      } else if (categoria === "trainee") {
+        descuento = 0.5;
+      } else if (categoria === "junior") {
+        descuento = 0.15;
+      }
+
+      const valorTicket = 200;
+      const totalAPagar = (cantidadTickets * valorTicket * (1 - descuento)).toFixed(2);
+
+      const totalAPagarTextarea = document.querySelector(".total-a-pagar-textarea");
+      totalAPagarTextarea.value = `Total a pagar: $${totalAPagar}`;
+    });
+
+//Resumen con un PopUp
+    const resumenButton = document.getElementById("Resumen");
+    if (resumenButton) {
+      resumenButton.addEventListener("click", () => {
+
+        const nombre = document.querySelector('input[name="nombre"]').value;
+        const apellido = document.querySelector('input[name="apellido"]').value;
+        const email = document.querySelector('input[name="email"]').value;
+        const cantidadTickets = parseInt(document.querySelector('input[name="cantidad"]').value);
+        const categoria = document.querySelector('input[name="categoria"]:checked').value;
+  
+    
+        let descuento = 0;
+        if (categoria === "estudiante") {
+          descuento = 0.8;
+        } else if (categoria === "trainee") {
+          descuento = 0.5;
+        } else if (categoria === "junior") {
+          descuento = 0.15;
+        }
+  
+        const valorTicket = 200;
+        const totalAPagar = (cantidadTickets * valorTicket * (1 - descuento)).toFixed(2);
+  
+       
+        const resumenText = `Resumen:\nNombre: ${nombre}\nApellido: ${apellido}\nCorreo: ${email}\nCantidad de Tickets: ${cantidadTickets}\nCategoría: ${categoria}\nTotal a pagar: $${totalAPagar}`;
+  
+        window.alert(resumenText);
+      });
+    }
+  </script>
+</body>
+</html>
